@@ -1,0 +1,43 @@
+Techno chosis : back en java front en react 
+
+
+théme : App spécialisé dans le coaching en ligne et suivis personnalisé + apelle en  visio ou conférence à plusieur disponible
+ , objectif principal en fair une plateforme de live stream accéscible  gratuitement ou payant celon l'envie du coach
+
+
+
+clientéle visé : Toute personne dans l'incapacité de ce déplacer a la salle de sport pour une quelquonque raisons
+ , ainsi que les Coach ayant envie  de se lancer dans les cours virtuel pour augmenter leur revenus en complément ou en pleins temps 
+
+
+
+parcour userlambda : 
+
+1 / accés a la page vitrine : les stream en public et gratuit sont visible pour les visible pour les non-inscrit (mais interdiction de commenter)
+
+
+2/ sign -in / send confirmation etc 
+
+
+3/ choose a catégorie
+
+
+4/l'utilisateur arrive sur une page lui montrant les vidéo conscerner par la catégorie en question ou les lives en cours si il y en a ...
+
+
+5/ posibilité de commenter la vidéo ou le stream  en cour, ou demander a participer a la visioconf , possiblité d'envoyer une requêtes de conversations avec le coach 
+
+
+
+parcours caoch lambda : 
+ 
+
+1/sign in en tant que coach
+
+2/formulaire demandant quelle domaine il/elle est principalement , année d'experience , diplome 
+
+3/ lauch stream / c quoi le domaine ?/stream en direct 
+
+4/ fin de stream possiblité  supr ou garder la vidéo dans le feed du coach ,
+
+possibilité d'avoir une communauté et de lancer une conversations avec les follower
