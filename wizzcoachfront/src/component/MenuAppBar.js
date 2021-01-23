@@ -33,13 +33,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MenuAppBar = props => {
-  const {history } = props;
+  
  /* console.log(props);*/
   const classes = useStyles();
   const [auth, setAuth] = React.useState(Auth);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
+  const {history } = props;
   const handleChange = (event) => {
     setAuth(event.target.checked);
   };
@@ -53,12 +53,12 @@ const MenuAppBar = props => {
     setAnchorEl(null);
   };
   async function signOut(pageURL) {
-    history.push(pageURL);
+
     try {
         await Auth.signOut();
     } catch (error) {
         console.log('error signing out: ', error);
-    }
+    } history.push(pageURL);
 };
 async function signIn() {
   try {
@@ -110,6 +110,7 @@ async function signIn() {
                 onClose={() => 
                 setAnchorEl(null)}
               >
+              
                 <MenuItem onClick={()=> handleMenuClick('/auth')}>Profile</MenuItem>
                 <MenuItem onClick={()=> handleMenuClick('/')}>Home</MenuItem>
                 <MenuItem onClick={()=> signOut('/auth')}>Deconnection</MenuItem>
