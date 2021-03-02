@@ -30,9 +30,11 @@ export default function LiveGrid() {
       <Grid bgcolor={50} container spacing={3}  direction="column" y={6}>
       <Grid item xs= {8}  >
       <Paper className={classes.paper}> Lives en cour </Paper>
-      </Grid>
-      <Live />
+
       
+      </Grid>
+      
+      <Live />
 
       <Grid item xs= {4}  >
       <Paper className={classes.paper}> Lives en cour </Paper>

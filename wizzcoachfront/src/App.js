@@ -6,7 +6,7 @@ import Cam from './Cam'
 import MenuAppBar from './component/MenuAppBar';
 import Home from './component/Home'
 import { Router, Route, Switch,  browserHistory, IndexRoute  } from 'react-router';
-import { Box } from '@material-ui/core';
+
 import CardCate from './component/CardCate';
 import {Auth} from '@aws-amplify/auth';
 import UserForm from './component/UserForm'
@@ -17,6 +17,9 @@ import Amplify from 'aws-amplify';
 import config from './aws-exports';
 import AuthComponent from './component/AuthComponent';
 import { BrowserRouter } from 'react-router-dom';
+import Yoga from './component/Categorie/Yoga';
+import PDC from './component/Categorie/PDC';
+import Musculation from './component/Categorie/Musculation';
 Amplify.configure(config);
 
 /////
@@ -24,23 +27,22 @@ Amplify.configure(config);
 function App(props) {
 
   const {history } = props;
-const [user , setUser] = React.useState(null)
-React.useEffect(() => {
-  Auth.currentAuthenticatedUser().then(currentUser => setUser(currentUser))
-  .catch(err => console.log({err}))
-    } , [])
+
   return (
     <div className="App">
-    <BrowserRouter>
+  <BrowserRouter>
   <Switch>
     <Route exact from="/" render = {props => <Home {...props} />}/>
     <Route exact from="/authsign" render = {props => <AmplifySignIn {...props} />}/>
     <Route exact from="/Auth" render = {props => <AuthComponent {...props} />}/>
-    <Route exact from = "/Auth/UserForm" render = {props => <UserForm {...props} />}/>
+    <Route exact from = "/UserForm" render = {props => <UserForm {...props} />}/>
+    <Route exact from = "/cour/Yoga" render = {props => <Yoga {...props} />}/>
+    <Route exact from = "/cour/PDC" render = {props => <PDC {...props} />}/>
+    <Route exact from = "/cour/musculation" render = {props => <Musculation {...props} />}/>
   </Switch>
 </BrowserRouter>
     </div>
   );
 }
 
-export  default  withAuthenticator(App);
+export  default  App;

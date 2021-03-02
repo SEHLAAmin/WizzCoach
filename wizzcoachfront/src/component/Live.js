@@ -12,12 +12,11 @@ export default function Live() {
         <Grid container >
         <Grid item xs={6} >
             <ReactPlayer
-            controls={true}
-            src={streamUrl}
+            url = {streamUrl}
             width ="100%"
             height = "100%"
-            playing = {true}
-            allow='autoplay; encrypted-media'
+            playing = "true"
+            allow = "autoplay, encrypted-media"
             />
         </Grid>
         <Grid item  xs={4} color="primary" >

@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     fontFamily : 'MV Boli ',
     color : 'white',
+    cursor : 'pointer' ,
     fontWeight: ''
   },
 }));
@@ -73,14 +74,14 @@ async function signIn() {
     <div className={classes.root}>
       <FormGroup>
         <FormControlLabel
-          control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
+          control={<Switch  onChange={handleChange} aria-label="login switch" />}
           label={auth ? 'Logout' : 'Login'}
         />
       </FormGroup>
       <AppBar position="static" color= "primary">
         <Toolbar>
       
-          <Typography variant="h6" className={classes.title}>
+          <Typography  variant="h6" className={classes.title} onClick={()=> handleMenuClick('/')} > <a href=""></a>
             WizzCoach
           </Typography>
           {auth && (
