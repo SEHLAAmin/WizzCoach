@@ -1,32 +1,17 @@
 package com.wizzCoachcorp.wizzcoach.model;
 
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
+
 import javax.persistence.*;
 
+@MappedSuperclass
+public @Data class Account {
 
-@Entity
-
-public class Account {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id ;
     String name;
     String lastName;
-    String password;
     String pseudo;
     String adressMail;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -44,14 +29,6 @@ public class Account {
         this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPseudo() {
         return pseudo;
     }
@@ -67,4 +44,10 @@ public class Account {
     public void setAdressMail(String adressMail) {
         this.adressMail = adressMail;
     }
+
+
+
+
+
+
 }
