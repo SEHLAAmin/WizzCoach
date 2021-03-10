@@ -30,31 +30,7 @@ public interface CoachUserService {
         }
 
 
-        public void addEleveDansCoach(int coachId, int userId){
 
-            Coach currentCoach = checkCoach(coachId);
-
-            User currentUser = checkUser(userId);
-
-            List<User> listEleves = currentCoach.getEleves();
-
-            boolean exist = false;
-
-            for (User item: listEleves){
-                if(item == currentUser){
-                    exist = true;
-                    break;
-                }
-            }
-
-            if(!exist){
-                currentUser.setCoachs((List<Coach>) currentCoach);
-                userRepository.save(currentUser);
-            }
-            else {
-                throw new IllegalStateException("Client " +userId+ " déjà existant");
-            }
-        }
 
     }
 }

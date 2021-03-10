@@ -2,8 +2,9 @@ package com.wizzCoachcorp.wizzcoach.controller;
 
 
 import com.wizzCoachcorp.wizzcoach.model.Coach;
+import com.wizzCoachcorp.wizzcoach.repository.AbonnementRepository;
 import com.wizzCoachcorp.wizzcoach.repository.CoachUserRepository;
-import com.wizzCoachcorp.wizzcoach.repository.UserRepository;
+import com.wizzCoachcorp.wizzcoach.service.AbonnementService;
 import com.wizzCoachcorp.wizzcoach.service.CoachUserService;
 import com.wizzCoachcorp.wizzcoach.service.UserService;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,8 @@ public class CoachUserController {
     CoachUserService.CoachUserServiceImpl coachUserServiceImpl;
     UserService.UserServiceImpl userServiceimpl;
 
-
+    AbonnementRepository abonnementRepository;
+    AbonnementService.AbonnementServiceImpl abonnementService;
 
 
     @PostMapping
@@ -55,21 +57,15 @@ public class CoachUserController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+        @PostMapping(value = "{coachId}/utilisateur/{userId}")
+    public ResponseEntity<Void> addUserToCoachList(@RequestBody
+            @PathVariable("coachId") int coachId ,@PathVariable("userId") int userId){
+            ResponseEntity.ok()
+                    .body(
 
-    @PostMapping(value="{coachId}/eleve/{userId}")
-    public ResponseEntity<Void> addEleveToCoachCLass(@PathVariable("coachId") int coachId,
-                                                  @PathVariable("userId") int userId) {
+           abonnementService.addUserToCoachListServ(coachId , userId)
 
-        coachUserServiceImpl.addEleveDansCoach(coachId, userId);
-        return new ResponseEntity<>(null, HttpStatus.CREATED);
+                    );
+            return null;
     }
-    @GetMapping(value = "checking/{coachId}")
-    public ResponseEntity<Coach> checkingCoach(@PathVariable int coachId) {
-        return ResponseEntity.ok()
-                .body(
-
-                        coachUserServiceImpl.checkCoach(coachId)
-                );
-    }
-
 }
