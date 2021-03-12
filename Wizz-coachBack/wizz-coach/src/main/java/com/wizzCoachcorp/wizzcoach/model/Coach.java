@@ -24,7 +24,7 @@ public class Coach extends Account {
 
     @OneToMany(mappedBy = "eleve")
     @JsonBackReference(value = "findeleve")
-            @JsonIgnore
+    @JsonIgnore
     List<Abonnement> listAbonnes;
 
     public List<Abonnement> getListAbonnes() {
@@ -33,5 +33,13 @@ public class Coach extends Account {
 
     public void setListAbonnes(List<Abonnement> listAbonnes) {
         this.listAbonnes = listAbonnes;
+    }
+
+    public int getId(int coach_id) {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

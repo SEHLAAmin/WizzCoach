@@ -8,10 +8,12 @@ import com.wizzCoachcorp.wizzcoach.service.AbonnementService;
 import com.wizzCoachcorp.wizzcoach.service.CoachUserService;
 import com.wizzCoachcorp.wizzcoach.service.UserService;
 import lombok.AllArgsConstructor;
+import org.hibernate.exception.DataException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +36,8 @@ public class CoachUserController {
         coachUserRepository.save(coach);
         return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
-            //Get all Coach
+
+    //Get all Coach
     @GetMapping
     ResponseEntity<List<Coach>> getAllCoach() {
         return ResponseEntity.ok(
@@ -57,15 +60,4 @@ public class CoachUserController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-        @PostMapping(value = "{coachId}/utilisateur/{userId}")
-    public ResponseEntity<Void> addUserToCoachList(@RequestBody
-            @PathVariable("coachId") int coachId ,@PathVariable("userId") int userId){
-            ResponseEntity.ok()
-                    .body(
-
-           abonnementService.addUserToCoachListServ(coachId , userId)
-
-                    );
-            return null;
-    }
 }
