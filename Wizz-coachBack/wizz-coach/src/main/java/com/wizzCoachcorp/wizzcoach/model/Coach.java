@@ -4,12 +4,9 @@ package com.wizzCoachcorp.wizzcoach.model;
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import com.wizzCoachcorp.wizzcoach.model.Abonnement;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Optional;
 
 @EqualsAndHashCode(callSuper = true)
 @JsonIdentityInfo(
@@ -22,17 +19,17 @@ public class Coach extends Account {
     int id;
 
 
-    @OneToMany(mappedBy = "eleve")
+    @OneToMany(mappedBy = "coach")
     @JsonBackReference(value = "findeleve")
     @JsonIgnore
-    List<Abonnement> listAbonnes;
+    List<Abonnement> abonnements;
 
-    public List<Abonnement> getListAbonnes() {
-        return listAbonnes;
+    public List<Abonnement> getAbonnements() {
+        return abonnements;
     }
 
-    public void setListAbonnes(List<Abonnement> listAbonnes) {
-        this.listAbonnes = listAbonnes;
+    public void setAbonnements(List<Abonnement> abonnements) {
+        this.abonnements = abonnements;
     }
 
     public int getId(int coach_id) {

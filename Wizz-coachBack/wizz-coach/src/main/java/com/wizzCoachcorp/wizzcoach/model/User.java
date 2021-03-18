@@ -19,17 +19,17 @@ public class User extends  Account {
     int id;
 
 
-    @OneToMany(mappedBy = "coach")
+    @OneToMany(mappedBy = "eleve")
     @JsonBackReference(value = "findcoach")
     @JsonIgnore
-    List<Abonnement> listCoachs;
+    List<Abonnement> abonnements;
 
-    public List<Abonnement> getListCoachs() {
-        return listCoachs;
+    public List<Abonnement> getAbonnements() {
+        return abonnements;
     }
 
-    public void setListCoachs(List<Abonnement> listCoachs) {
-        this.listCoachs = listCoachs;
+    public void setAbonnements(List<Abonnement> abonnements) {
+        this.abonnements = abonnements;
     }
 
     public int getId(int user_id) {

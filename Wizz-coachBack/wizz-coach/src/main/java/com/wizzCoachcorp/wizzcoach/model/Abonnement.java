@@ -2,11 +2,9 @@ package com.wizzCoachcorp.wizzcoach.model;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 
 @Entity
@@ -17,29 +15,29 @@ public @Data
 class Abonnement {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     Date inscription;
     Date finInscritpion;
 
 
-    @ManyToOne
+    @ManyToOne @JoinColumn(name = "eleve_id")
     @JsonManagedReference(value = "findeleve")
     @JsonIgnore
     private User eleve;
 
 
-    @ManyToOne
-    @JsonManagedReference( value = "findcoach")
+    @ManyToOne @JoinColumn(name = "coach_id")
+    @JsonManagedReference(value = "findcoach")
     @JsonIgnore
     private Coach coach;
 
 
-    public Abonnement(Date inscription, Date finInscritpion, User eleve, Coach coach) {
+    public Abonnement(Date inscription, Date finInscritpion, User user_id, Coach coach_id) {
         this.inscription = inscription;
         this.finInscritpion = finInscritpion;
-        this.eleve = eleve;
-        this.coach = coach;
+        this.eleve = user_id;
+        this.coach = coach_id;
     }
 
     public Abonnement() {
@@ -62,19 +60,21 @@ class Abonnement {
         this.finInscritpion = finInscritpion;
     }
 
-    public User getEleve() {
-        return eleve;
+    public User getEleve(User user_id) {
+        return user_id;
     }
 
-    public void setEleve(User eleve) {
-        this.eleve = eleve;
+    public void setEleve(User user_id) {
+        this.eleve = user_id;
     }
 
-    public Coach getCoach() {
-        return coach;
+    public Coach getCoach(Coach coach_id) {
+        return coach_id;
     }
 
     public void setCoach(Coach coach) {
         this.coach = coach;
     }
+
+
 }

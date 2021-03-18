@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 
@@ -44,19 +45,25 @@ public class AbonnementController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PostMapping(path = "coach/{coachId}/user/{userId}")
-    public ResponseEntity<Abonnement> MakeFollowingByID(@PathVariable("coachId") int coach_id ,
-                                                         @PathVariable("userId") int user_id) {
+    @PostMapping(path = "coach/{coach_Id}/utilisateur/{user_id}")
+    public ResponseEntity<Abonnement> MakeFollowingByID(@PathVariable("coach_Id") Coach coach_id ,
+                                                         @PathVariable("user_id") User user_id) {
             Coach coach = new Coach();
             User user = new User();
-        Abonnement abone = new Abonnement();
-      abone.setId(coach.getId(coach_id));
-      abone.setId(user.getId(user_id));
-        abonnementRepository.save(abone);
-            if(abone == null) {
+        Abonnement abonnement = new Abonnement();
+
+
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        Date date = new Date(System.currentTimeMillis());
+        System.out.println(formatter.format(date));
+      abonnement.setInscription(date);
+      abonnement.setEleve(user_id);
+      abonnement.setCoach(coach_id);
+        abonnementRepository.save(abonnement);
+            if(abonnement == null) {
                 return ResponseEntity.notFound().build();
             } /*else {
         return new ResponseEntity<>(null, HttpStatus.CREATED);}*/
-        return ResponseEntity.ok().body(abone);
+        return ResponseEntity.ok().body(abonnement);
     }
 }

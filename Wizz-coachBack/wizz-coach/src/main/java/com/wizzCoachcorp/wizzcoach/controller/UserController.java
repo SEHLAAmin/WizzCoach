@@ -29,8 +29,10 @@ public class UserController {
 
     @GetMapping
     ResponseEntity<List<User>> getUtilisateurs() {
+       List<User> listUser= userRepository.findAll();
+
         return ResponseEntity.ok(
-                userRepository.findAll());
+                listUser);
     }
 
     // Renvoie un item via son id
