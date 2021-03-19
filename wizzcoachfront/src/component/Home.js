@@ -5,48 +5,57 @@ import CardCate from "./CardCate";
 import ScopedCssBaseline from "@material-ui/core/ScopedCssBaseline";
 import LiveGrid from "./LiveGrid";
 import Live from "./Live";
-import { withAuthenticator } from "@aws-amplify/ui-react";
 import ReactPlayer from "react-player";
 import Cam from "../Cam"
 import axios from 'axios-react'
 import SideBar from './SideBar'
 import { makeStyles } from "@material-ui/core";
+import ButtonDuStream from './ButtonDustream'
 import { useTheme } from '@material-ui/core/styles';
-/*
-
-const categories = ["Yoga", "Muscu", "Dos"];
-const Listcategories = categories.map((categories) => <h2>{categories}</h2>); */
 import zIndex from "@material-ui/core/styles/zIndex";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
+
+// CSS
 const useStyles = makeStyles({
   homeContainer: {
-    backgroundColor: '',
+    backgroundColor: '#E9E9E9',
     color: props => props.color,
     width:'100%',
-    marginLeft : '5%',
     position: 'absolute',
     zIndex : 2,
-    paddingBottom: '100%'
+    paddingBottom: '100%',
+    textAlign: 'center'
   },
+
+  title : {
+    color : '#919191'
+  }
 });
 
 
 
 
 function Home (props){
+ //to do 
+  const [login , isLogin] = React.useState(false);
 
+  //To do 
+function doLogin(){
+  
+}
+//classes permet d'acceder aux fonctionnalité makeStyl de MUI
+const classes = useStyles(props);
+
+  //fonction css
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
-    
+    //GERER LES LIEN ROUTER 
 const {history } = props; //permet de gerer les url
-
 //Redirige vers sa catégorie respective
 const handleClickCard = (url) => {
    history.push(url);
   }
- const classes = useStyles(props);
 
 
 
@@ -55,10 +64,10 @@ const handleClickCard = (url) => {
     /*pour gérer les composant  enfant */
     <Fragment>
       <MenuAppBar />
-      <SideBar>{`theme.breakpoints.up('sm') matches: ${matches}`}</SideBar>
+      <SideBar/>
       {/*<Cam />*/}
 <div className = {classes.homeContainer}>
-      <h1> Catégorie suivis :</h1>
+      <h1 className= {classes.title}> Catégorie suivis :</h1>
 
       <Grid
       
@@ -94,11 +103,11 @@ const handleClickCard = (url) => {
         </Grid>
       </Grid>
 
-      <h3>Recommandé pour vous :</h3>
+      <h3 className = {classes.title}>Recommandé pour vous :</h3>
       <Box marginTop={4} display="flex" justifyContent="center">
         <LiveGrid />
       </Box>
-
+    <ButtonDuStream />
     </div>
     </Fragment>
   );

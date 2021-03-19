@@ -13,8 +13,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import {withRouter} from 'react-router-dom'
 import { palette } from '@material-ui/system';
-import AmplifysSignOut from '@aws-amplify/auth'
-import Auth from '@aws-amplify/auth'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,18 +29,25 @@ const useStyles = makeStyles((theme) => ({
     cursor : 'pointer' ,
     fontWeight: ''
   },
+  appbar : {
+    width : '100%',
+    textAlign : 'center'
+  
+  }
 }));
 
 const MenuAppBar = props => {
   
  /* console.log(props);*/
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(Auth);
+  const [logged , setIsLogin] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const {history } = props;
   const handleChange = (event) => {
-    setAuth(event.target.checked);
+    event.preventDefault();
+    setIsLogin(!logged);
+
   };
 
   const handleMenu = (event) => {
@@ -51,40 +56,24 @@ const MenuAppBar = props => {
 
   const handleMenuClick = (pageURL) => {
     history.push(pageURL);
-    setAnchorEl(null);
   };
-  async function signOut(pageURL) {
-
-    try {
-        await Auth.signOut();
-    } catch (error) {
-        console.log('error signing out: ', error);
-    } history.push(pageURL);
-};
-async function signIn() {
-  try {
-      const user = await Auth.currentAuthenticatedUser(this.state.username, this.state.user.password);
-  } catch (error) {
-      console.log('error signing in', error);
-
-  }
-}
+  
 
   return (
     <div className={classes.root}>
       <FormGroup>
         <FormControlLabel
           control={<Switch  onChange={handleChange} aria-label="login switch" />}
-          label={auth ? 'Logout' : 'Login'}
+        label
         />
       </FormGroup>
-      <AppBar position="static" color= "primary">
+      <AppBar className={classes.appbar} position="static" color= "primary">
         <Toolbar>
       
           <Typography  variant="h6" className={classes.title} onClick={()=> handleMenuClick('/')} > <a href=""></a>
             WizzCoach
           </Typography>
-          {auth && (
+          { /*auth*/ logged && (
             <div>
               <IconButton
                 aria-label="account of current user"
@@ -112,9 +101,9 @@ async function signIn() {
                 setAnchorEl(null)}
               >
               
-                <MenuItem onClick={()=> handleMenuClick('/auth')}>Profile</MenuItem>
+                <MenuItem onClick={()=> handleMenuClick('/profile')}>Profile</MenuItem>
                 <MenuItem onClick={()=> handleMenuClick('/')}>Home</MenuItem>
-                <MenuItem onClick={()=> signOut('/auth')}>Deconnection</MenuItem>
+                <MenuItem onClick={null /*signOut('/Authent'*/}>Deconnection</MenuItem>
 
               </Menu>
             </div>

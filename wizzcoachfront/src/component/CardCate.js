@@ -11,8 +11,8 @@ import CoachForm from "./CoachForm";
 import UserForm from "./UserForm";
 import { preventdefault } from "react-dom";
 import { useState } from "react";
-import handleShowDetail from "./AuthComponent";
-import handleClickCard from "./AuthComponent";
+import handleShowDetail from "./Profile";
+import handleClickCard from "./Profile";
 const useStyles = makeStyles({
   cardroot: {
     maxWidth: 345,
