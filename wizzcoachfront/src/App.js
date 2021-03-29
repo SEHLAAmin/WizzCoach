@@ -12,7 +12,7 @@ import Musculation from './component/CategoriesCompoment/Musculation';
 import Profile from './component/Profile';
 import Authent from './component/Authtent';
 import { makeStyles } from '@material-ui/core';
-import Categorie from './component/CategoriesCompoment/GridCate'
+import LiveForm from './component/CategoriesCompoment/LiveForm'
 import ChooseCategorie from './component/CategoriesCompoment/ChooseCategorie';
 /////
 
@@ -39,6 +39,8 @@ function App(props) {
     <Route exact from = "/cour/pdc" render = {props => <PDC {...props} />}/>
     <Route exact from = "/cour/categories" render = {props => <ChooseCategorie {...props} />}/>
     <Route exact from = "/cour/musculation" render = {props => <Musculation {...props} />}/>
+    <Route exact from = "/cour" render = {props => <LiveForm {...props} />}/>
+
   </Switch>
 </BrowserRouter>
     </div>

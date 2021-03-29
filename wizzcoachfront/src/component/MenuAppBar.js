@@ -17,7 +17,11 @@ import { palette } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    position:'fixed',
     flexGrow: 1,
+    zIndex:'1000',
+    width : '100%',
+    top : 0
   },
   menuButton: {
     marginRight: theme.spacing(2),

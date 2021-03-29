@@ -1,77 +1,111 @@
 import React from 'react'
-import {Button, FormControlLabel, Input, InputLabel, makeStyles, StylesProvider} from '@material-ui/core'
+import {Button, FormControlLabel, Input, InputLabel, makeStyles, StylesProvider, Typography} from '@material-ui/core'
 import { blue, orange } from '@material-ui/core/colors';
 import Image from '../img/pexels-li-sun-2294354.jpg'; // Import using relative path
 import MenuAppBar from './MenuAppBar';
 import { Label, LabelImportantOutlined } from '@material-ui/icons';
-
+import {Grid} from '@material-ui/core'
+import {Paper} from '@material-ui/core'
+import {Avatar, TextField} from '@material-ui/core'
+import LockIcon from '@material-ui/icons/Lock';
+import {Checkbox} from '@material-ui/core'
+import { Link } from '@material-ui/core';
 
 
 const useStyles = makeStyles(() => ({
  
-    container : {
-        display:'flex',
-        flexDirection : 'column',
+    all : {
+        margin:'0',
+        padding : '0'  ,
+        backgroundImage : 'https://1hl88v1pgor71fw4zc37dmbz-wpengine.netdna-ssl.com/wp-content/uploads/background-gym-tablet.jpg',
         width : '100%',
-        height : '100%',
-        backgroungImage : {Image},    },
-barmenu : {
-    width : '100%'
-}, 
-pancarte : {
-    display: 'flex',
-    flexDirection : 'column',
-    position: 'absolute',
-    alignContent:'center',
-    justifyContent:'center',
-    zIndex : '2',
-    borderRadius : '20%' , 
-    border : 'solid white 2px',
-    width: '450px',
-    height : '450px',
-    backgroundColor : 'grey',
-    opacity : '50%',
-    margin : '25% 0 75% 35%'
-},
-imageContainer : {
-    
-},
-pancarteContainer : {
-    color : 'black',
-    textAlign : 'center'
-}
+        height :'100%'
+    },
+    gridcontainer : {
+        marginTop : '150px'
+    }
 
+ 
   }));
+
 
 const handleSubmit =(event)=>{
     event.preventDefault()
-    console.log('prout')
 }
 
 
-export default function Authent(props) {
 
-    const classes = useStyles();
+export default function Authent(props) {
+  
+    const {history} = props  
+    const  handleClickSignUp = (URL) =>{
+    
+    history.push(URL);
+      }   
+    const classes = useStyles(props);
+      const paperStyle = {
+          padding  :'20px', height: '70vh' ,width :280, margin :"20px auto"
+      }
+
+    const avatarStyle = {
+        backgroundColor : 'orange'
+    }
+
+    const btnStyle = {
+        margin : '10px 0'
+    }
       
-      
+
+
     return (
-        <div>
-        <div className={classes.container}>
-        <MenuAppBar className={classes.barmenu} />
-        <div className="imageContainer">
-        <img src={Image} height="70%" width="100%" alt=""/></div>
-        <div className={classes.pancarte}>
-        
-        <div className={classes.pancarteContainer}>
-           <h1>Identifiez vous:</h1>  
-           <form  action="">  <InputLabel>nom :</InputLabel>
-                    <Input/>
-                    <InputLabel>prenom  :</InputLabel>
-                    <Input/>
-                    <Button  onSubmit={()=> handleSubmit}  backGroundColor='primary' type = "submit"> Connexion</Button>
-                    </form> </div>
+        <div className={classes.all}>
+        <div >
+        <MenuAppBar />
         </div>
-    </div>
+
+        <Grid className ={classes.gridcontainer}>
+            <Paper elevation={10} style={paperStyle}>
+                <Grid align='center'> 
+            <Avatar style ={avatarStyle}><LockIcon/></Avatar>
+            <h2>Sign in</h2>
+           </Grid>
+            <TextField
+              id=""
+              label="pseudo/mail"
+              placeholder="enter pseudo/mail"
+              fullWidth="true"
+              required
+            />
+               <TextField
+              id=""
+              type="password"
+              label="password"
+              placeholder="enter password"
+              fullWidth="true"
+              required
+            />
+            <FormControlLabel
+        control={
+          <Checkbox
+    
+            name="checkedB"
+            color="primary"
+          />
+        }
+        label="Remember-me"
+      />
+      <Button style={btnStyle} type="submit" color="primary" variant="contained" fullWidth> Sign in </Button>
+      <Typography>
+      <Link href="#" >
+          forgot password ?
+      </Link>
+      </Typography>
+      <Typography>
+          Do you have an account ?
+          <Link onClick = {() => handleClickSignUp('/home')}> Sign Up </Link>
+      </Typography>
+            </Paper>
+        </Grid>
         </div>
     )
 }

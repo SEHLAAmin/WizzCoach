@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -13,6 +13,7 @@ import muscu from '../../img/fitness.jpg'
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    padding : '10px',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
@@ -20,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: 500,
-    height: 450,
+    minWidth: 500,
+    minHeight: 450,
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -32,28 +33,42 @@ const useStyles = makeStyles((theme) => ({
   const tileData = [
     {
       img: image,
-      title: 'Image',
+      title: 'Yoga',
       author: 'author',
    }, 
    {
     img: muscu,
-    title: 'Image',
+    title: 'Gainage',
     author: 'author',
- }
+ },
+ {
+  img: muscu,
+  title: 'pdc',
+  author: 'author',
+}
     
   ];
  
-function Categorie() {
+function GridCate() {
+  const [categorie , setCategorie] = useState({});
+  const [isClicked , setIsClicked] = useState(false);
   const classes = useStyles();
 
+
+ const handleClickCate = () => {
+setIsClicked(!isClicked)
+console.log(isClicked);
+  }
+
   return (
-    <div className={classes.root}>
+    <form className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">December</ListSubheader>
         </GridListTile>
         {tileData.map((tile) => (
-          <GridListTile key={tile.img}>
+          <GridListTile 
+          onClick = {handleClickCate}
+          key={tile.img}>
             <img src={tile.img} alt={tile.title} />
             <GridListTileBar
               title={tile.title}
@@ -67,7 +82,8 @@ function Categorie() {
           </GridListTile>
         ))}
       </GridList>
-    </div>
+      <button type='submit '> Soumettre </button>
+    </form>
   );
 }
-export default withRouter(Categorie);
+export default withRouter(GridCate);

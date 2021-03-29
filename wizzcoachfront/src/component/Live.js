@@ -10,7 +10,7 @@ export default function Live() {
         <Grid container >
         <Grid item xs={6} >
             <ReactPlayer
-            url = {streamUrl}
+            url = {null}
             width ="100%"
             height = "100%"
             playing = "true"

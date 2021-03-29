@@ -15,21 +15,33 @@ import { useTheme } from '@material-ui/core/styles';
 import zIndex from "@material-ui/core/styles/zIndex";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-
+import {Grow} from '@material-ui/core'
 // CSS
 const useStyles = makeStyles({
   homeContainer: {
-    backgroundColor: '#E9E9E9',
     color: props => props.color,
     width:'100%',
     position: 'absolute',
     zIndex : 2,
+    backgroundColor: '#E9E9E9',
     paddingBottom: '100%',
-    textAlign: 'center'
+    marginLeft : '100px',
+    justifyContent : 'center'
   },
 
   title : {
     color : '#919191'
+  },
+  body : {
+    backgroundColor: '#E9E9E9'
+  } , 
+  boxOne : {
+    marginTop : '150px',
+    marginLeft : '175px',
+    justifyContent : 'center',
+    textAlign: 'center',
+    width:'70%'
+
   }
 });
 
@@ -62,13 +74,13 @@ const handleClickCard = (url) => {
 
   return (
     /*pour gérer les composant  enfant */
-    <Fragment>
+    <Fragment className={classes.homeContainer}>
       <MenuAppBar />
       <SideBar/>
       {/*<Cam />*/}
-<div className = {classes.homeContainer}>
+<div className={classes.boxOne} >
       <h1 className= {classes.title}> Catégorie suivis :</h1>
-
+<Grow in={true}  timeout={'auto'}>
       <Grid
       
         container
@@ -79,6 +91,7 @@ const handleClickCard = (url) => {
         alignContent="center"
         wrap="nowrap" /*alligne tout les item vers le centre */
       >
+     
         <Grid item onClick= {()=>{handleClickCard('/cour/yoga')}}>
           {" "}
           <CardCate
@@ -102,7 +115,7 @@ const handleClickCard = (url) => {
           />
         </Grid>
       </Grid>
-
+</Grow>
       <h3 className = {classes.title}>Recommandé pour vous :</h3>
       <Box marginTop={4} display="flex" justifyContent="center">
         <LiveGrid />
