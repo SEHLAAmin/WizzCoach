@@ -53,7 +53,7 @@ public class CoachUserController {
                         coachUserRepository.findById(id)
                 );
     }
-
+//modifier
     @PutMapping
     public ResponseEntity<Void> updateUtilisateur(@RequestBody Coach coach) {
         coachUserRepository.save(coach);

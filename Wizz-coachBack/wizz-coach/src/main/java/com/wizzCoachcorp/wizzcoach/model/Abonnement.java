@@ -8,9 +8,7 @@ import java.util.Date;
 
 
 @Entity
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+
 public @Data
 class Abonnement {
 
@@ -42,6 +40,22 @@ class Abonnement {
 
     public Abonnement() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getEleve() {
+        return eleve;
+    }
+
+    public Coach getCoach() {
+        return coach;
     }
 
     public Date getInscription() {

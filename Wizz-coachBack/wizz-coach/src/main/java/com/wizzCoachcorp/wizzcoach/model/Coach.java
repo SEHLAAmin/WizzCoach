@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -24,6 +25,18 @@ public class Coach extends Account {
     @JsonIgnore
     List<Abonnement> abonnements;
 
+    @OneToMany(mappedBy = "auteur")
+    @JsonManagedReference
+    List<Live> liveList;
+
+    public List<Live> getLiveList() {
+        return liveList;
+    }
+
+    public void setLiveList(List<Live> liveList) {
+        this.liveList = liveList;
+    }
+
     public List<Abonnement> getAbonnements() {
         return abonnements;
     }
@@ -39,4 +52,6 @@ public class Coach extends Account {
     public void setId(int id) {
         this.id = id;
     }
+
+
 }

@@ -12,15 +12,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 public interface AbonnementService extends AbonnementRepository {
 
 
-    @Service
+
+
+        @Service
     @Primary
      class AbonnementServiceImpl {
 
@@ -28,13 +27,7 @@ public interface AbonnementService extends AbonnementRepository {
         AbonnementRepository abonnementRepository;
         CoachUserRepository coachUserRepository;
         UserRepository userRepository;
-/*
-        public void addUserToCoachListServ(int coachId, int userId , Date inscription , Date finInscription) {
 
-            abonnementRepository.save(new Abonnement(coachId,userId ,inscription, finInscription));
-
-        }
-*/
          Coach checkCoach(int coachId) {
             return coachUserRepository.findById(coachId)
                     .orElseThrow(()-> new ResponseStatusException(

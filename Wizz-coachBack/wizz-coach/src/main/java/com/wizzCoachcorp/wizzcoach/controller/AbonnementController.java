@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -27,32 +28,45 @@ public class AbonnementController {
     AbonnementService abonnementService;
     CoachUserRepository coachUserRepository;
     UserRepository userRepository;
+
+    //post un abonnement en Json
     @PostMapping
     public ResponseEntity<Void> postFollowing(@RequestBody Abonnement abonnement) {
         abonnementRepository.save(abonnement);
         return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
 
+
+//modifier
     @PutMapping
     public ResponseEntity<Void> updateFollowing(@RequestBody Abonnement abonnement) {
         abonnementRepository.save(abonnement);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+
+    //retourne toute les liaison Abonnement effectuer
+    @GetMapping
+    ResponseEntity<List<Abonnement>> getFollow() {
+        return ResponseEntity.ok(
+                abonnementRepository.findAll());
+    }
+
+
+    // deleteby Id
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> deleteFollowing(@PathVariable("id") int id) {
         abonnementRepository.deleteById(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+
+    //post une liaison via les FK des Account(user , coach) dans abonnement
     @PostMapping(path = "coach/{coach_Id}/utilisateur/{user_id}")
     public ResponseEntity<Abonnement> MakeFollowingByID(@PathVariable("coach_Id") Coach coach_id ,
                                                          @PathVariable("user_id") User user_id) {
-            Coach coach = new Coach();
-            User user = new User();
+
         Abonnement abonnement = new Abonnement();
-
-
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         Date date = new Date(System.currentTimeMillis());
         System.out.println(formatter.format(date));
@@ -65,5 +79,11 @@ public class AbonnementController {
             } /*else {
         return new ResponseEntity<>(null, HttpStatus.CREATED);}*/
         return ResponseEntity.ok().body(abonnement);
+    }
+    // Retourne toute les liaison reliés a tels {CoachId}
+    @GetMapping(path = "/coach/{coachId}/abo")
+    ResponseEntity<List<Abonnement>> getFollowerOfCoachById( @PathVariable int coachId) {
+        return ResponseEntity.ok(
+                coachUserRepository.findById(coachId).get().getAbonnements() );
     }
 }
