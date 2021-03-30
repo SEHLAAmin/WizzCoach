@@ -20,7 +20,6 @@ public class User extends  Account {
 
 
     @OneToMany(mappedBy = "eleve")
-    @JsonBackReference(value = "findcoach")
     @JsonIgnore
     List<Abonnement> abonnements;
 

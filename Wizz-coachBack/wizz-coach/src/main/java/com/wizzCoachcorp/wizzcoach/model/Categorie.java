@@ -1,11 +1,16 @@
 package com.wizzCoachcorp.wizzcoach.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Categorie {
 
     @Id
@@ -39,4 +44,5 @@ public class Categorie {
     public void setLives(Live lives) {
         this.lives = lives;
     }
+
 }

@@ -24,7 +24,6 @@ public class UserController {
     private final UserService.UserServiceImpl userService;
 
 
-    private static  final List<User> ELEVE = Arrays.asList();
     // Renvoie tous nos utilisateurs
 
     @GetMapping

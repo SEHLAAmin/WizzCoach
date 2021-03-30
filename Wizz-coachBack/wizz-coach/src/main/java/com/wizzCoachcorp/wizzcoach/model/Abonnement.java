@@ -8,7 +8,9 @@ import java.util.Date;
 
 
 @Entity
-
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public @Data
 class Abonnement {
 
