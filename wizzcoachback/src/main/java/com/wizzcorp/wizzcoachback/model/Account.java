@@ -23,5 +23,6 @@ public class Account {
     String adressMail;
     String role;
     boolean enabled;
+    String avatarUrl;
 
 }

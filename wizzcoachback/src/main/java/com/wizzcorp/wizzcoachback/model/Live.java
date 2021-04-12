@@ -6,16 +6,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Live {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     int id;
     public String title;
     public  String description;
@@ -30,6 +30,19 @@ public class Live {
     @JoinColumn(name="auteur_id")
     @JsonIgnore
     CoachUser auteur;
+
+
+    @OneToMany(mappedBy = "lives")
+    @JsonIgnore
+    List<Category> categoryList;
+
+    public List<Category> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
+    }
 
     public CoachUser getAuteur() {
         return auteur;

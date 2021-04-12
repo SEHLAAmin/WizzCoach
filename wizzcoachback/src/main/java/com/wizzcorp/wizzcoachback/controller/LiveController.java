@@ -21,6 +21,9 @@ public class LiveController {
 
 
     @Autowired
+    LiveRepository liveRepository;
+
+    @Autowired
     LiveService liveService;
 
     @GetMapping
@@ -50,17 +53,6 @@ public class LiveController {
         liveService.postLive(live);
         return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
-
-    @PostMapping("/{{coachId}}/coachpost")
-    public ResponseEntity<Void> postLiveByCoachId(@RequestBody Live live ,
-                                                  @PathVariable(value ="coachId") CoachUser coachId
-    ) {
-        live.setAuteur(coachId);
-        liveService.postLive(live);
-
-        return new ResponseEntity<>(null, HttpStatus.CREATED);
-
-}
 /*
     @GetMapping(value = "{coachId}/auteur" )
     public ResponseEntity<List<Live>> getLivesByCoachId(@PathVariable int coachId) {
@@ -68,4 +60,17 @@ public class LiveController {
              /*   liveService.getlivesByCoachIdServ(coachId));
     }
 */
+
+
+    @PostMapping("/coachpostLive/{coachId}")
+    public ResponseEntity<Void> postLiveByCoachId(@RequestBody Live live ,
+                                                  @PathVariable(value ="coachId") CoachUser coachId
+    ) {
+        live.setAuteur(coachId);
+        liveRepository.save(live);
+
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
+    }
+
+
 }
