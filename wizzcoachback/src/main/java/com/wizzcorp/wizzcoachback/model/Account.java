@@ -1,10 +1,7 @@
 package com.wizzcorp.wizzcoachback.model;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @MappedSuperclass
@@ -20,7 +17,7 @@ public class Account {
     String lastName;
     String pseudo;
     String password;
-    String adressMail;
+    String email;
     String role;
     boolean enabled;
 

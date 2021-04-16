@@ -24,8 +24,10 @@ public class AccountController {
 
     @PutMapping
     public ResponseEntity<Void> modifyAccount(@RequestBody Account account) {
+
         accountService.saveAccount(account);
         return new ResponseEntity<>(null, HttpStatus.OK);
+
     }
 
 
