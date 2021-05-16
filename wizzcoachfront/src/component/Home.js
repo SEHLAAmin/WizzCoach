@@ -120,7 +120,7 @@ const handleClickCard = (url) => {
       <Box marginTop={4} display="flex" justifyContent="center">
         <LiveGrid />
       </Box>
-    <ButtonDuStream />
+    <ButtonDuStream  handleClickCard={()=>handleClickCard('/cour')}/>
     </div>
     </Fragment>
   );

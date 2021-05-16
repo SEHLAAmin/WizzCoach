@@ -14,6 +14,7 @@ import Authent from './component/Authtent';
 import { makeStyles } from '@material-ui/core';
 import LiveForm from './component/CategoriesCompoment/LiveForm'
 import ChooseCategorie from './component/CategoriesCompoment/ChooseCategorie';
+import SignUp from './component/CategoriesCompoment/SignUp';
 /////
 
 function App(props) {
@@ -31,7 +32,7 @@ function App(props) {
     <div className="App">
   <BrowserRouter>
   <Switch>
-    <Route exact from="/" render = {props => <Home {...props} />}/>
+    <Route exact from="/home" render = {props => <Home {...props} />}/>
     <Route exact from="/Authent" render = {props => <Authent {...props} />}/>
     <Route exact from="/profile" render = {props => <Profile {...props} />}/>
     <Route exact from = "/UserForm" render = {props => <UserForm {...props} />}/>
@@ -40,6 +41,7 @@ function App(props) {
     <Route exact from = "/cour/categories" render = {props => <ChooseCategorie {...props} />}/>
     <Route exact from = "/cour/musculation" render = {props => <Musculation {...props} />}/>
     <Route exact from = "/cour" render = {props => <LiveForm {...props} />}/>
+    <Route exact from = "/" render = {props => <SignUp {...props} />}/>
 
   </Switch>
 </BrowserRouter>

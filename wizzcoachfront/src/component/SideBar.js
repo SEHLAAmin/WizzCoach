@@ -11,13 +11,21 @@ const useStyles = makeStyles({
     borderRadius : '1rem',
     top : '120px',
     backgroundColor: "#FF7D00",
-    left: '5px',
+    left: '-95px',
     minWidth: 150,
     height: "80%",
     position: 'fixed',
     zIndex : '1000',
     boxShadow : 3,
     color: (props) => props.color,
+
+    '&:hover': {
+      backgroundPosition: '100% 0%',
+      left: '5px',
+      transition: 'all 1s ease-in-out',
+    }
+
+
   },
 
   listuser : {
@@ -27,6 +35,11 @@ fontFamily:'MV Boli',
 color : 'white'
 
   },
+
+  imgPeople : {
+  padding : '10px'
+
+  }, 
 
  titlesidebar: {
         color:'white' , 
@@ -64,14 +77,23 @@ function SideBar(props) {
   const [sidebar , setSidebar] = useState(null);
   const [arrow , setArrow] = React.useState(false);
 
+  function callData() {
+    axios.get('http://localhost:8080/api/v1/user?coach_id=1')
+      .then(res => {
+        setData({hits : res.data })
+        console.log(res);
+      })
+      .catch(error => {
+        // handle error
+        console.log(error);
+      });
+  }
  // fait apelle a la méthode GET 
-useEffect(async () => {
-    const result = await axios.get(
-      'http://localhost:8080/api/v1/coach/1',
-    );
+useEffect ( ()=> {
+  callData();
+}
  
-    setData({hits: result.data.abonnements});
-  }, []);
+ , [])
 
   const classes = useStyles(props);
 
@@ -89,15 +111,19 @@ useEffect(async () => {
   <h4 className={classes.titlesidebar}>User connected :</h4>
   <div>
   <ul className={classes.listuser}>
-  {data.hits.map(item => (
-  
-        <li key={item.id}>
-        
-         <img src={avatar} width="50px" alt=""/>
-         <div classeName = {classes.ligthLogged}>s</div>
-        {item.eleve.pseudo} </li>
-
-      ))}
+ {
+   data.hits.length == 0 ? "no user connected" : 
+   data.hits.map((item) => (
+     <li key={item.id}>
+       <img 
+       className = {classes.imgPeople}
+       src={item.avatarUrl} alt=""
+         width = "60px"
+       />
+       <div>{item.pseudo}</div>
+     </li>
+   ))
+ }
     </ul>
     </div>
   </div>;
