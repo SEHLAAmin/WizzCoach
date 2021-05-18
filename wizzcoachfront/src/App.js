@@ -10,11 +10,12 @@ import Yoga from './component/CategoriesCompoment/Yoga';
 import PDC from './component/CategoriesCompoment/PDC';
 import Musculation from './component/CategoriesCompoment/Musculation';
 import Profile from './component/Profile';
-import Authent from './component/Authtent';
 import { makeStyles } from '@material-ui/core';
 import LiveForm from './component/CategoriesCompoment/LiveForm'
 import ChooseCategorie from './component/CategoriesCompoment/ChooseCategorie';
-import SignUp from './component/CategoriesCompoment/SignUp';
+import SignUp from './component/SignIn';
+import SignIn from './component/SignIn';
+import Inscription from './component/CategoriesCompoment/Inscription';
 /////
 
 function App(props) {
@@ -33,7 +34,8 @@ function App(props) {
   <BrowserRouter>
   <Switch>
     <Route exact from="/home" render = {props => <Home {...props} />}/>
-    <Route exact from="/Authent" render = {props => <Authent {...props} />}/>
+    <Route exact from="/" render = {props => <SignIn {...props} />}/>
+    <Route exact from="/signup" render = {props => <Inscription {...props} />}/>
     <Route exact from="/profile" render = {props => <Profile {...props} />}/>
     <Route exact from = "/UserForm" render = {props => <UserForm {...props} />}/>
     <Route exact from = "/cour/yoga" render = {props => <Yoga {...props} />}/>
@@ -41,8 +43,6 @@ function App(props) {
     <Route exact from = "/cour/categories" render = {props => <ChooseCategorie {...props} />}/>
     <Route exact from = "/cour/musculation" render = {props => <Musculation {...props} />}/>
     <Route exact from = "/cour" render = {props => <LiveForm {...props} />}/>
-    <Route exact from = "/" render = {props => <SignUp {...props} />}/>
-
   </Switch>
 </BrowserRouter>
     </div>

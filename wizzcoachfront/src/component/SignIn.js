@@ -35,7 +35,7 @@ const handleSubmit =(event)=>{
 
 
 
-export default function Authent(props) {
+export default function SignIn(props) {
   
     const {history} = props  
     const  handleClickSignUp = (URL) =>{
@@ -102,7 +102,7 @@ export default function Authent(props) {
       </Typography>
       <Typography>
           Do you have an account ?
-          <Link onClick = {() => handleClickSignUp('/home')}> Sign Up </Link>
+          <Link onClick = {() => handleClickSignUp('/signup')}> Sign Up </Link>
       </Typography>
             </Paper>
         </Grid>

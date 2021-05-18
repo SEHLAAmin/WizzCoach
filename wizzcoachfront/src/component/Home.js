@@ -51,7 +51,6 @@ const useStyles = makeStyles({
 function Home (props){
  //to do 
   const [login , isLogin] = React.useState(false);
-
   //To do 
 function doLogin(){
   
@@ -67,11 +66,8 @@ const {history } = props; //permet de gerer les url
 //Redirige vers sa catégorie respective
 const handleClickCard = (url) => {
    history.push(url);
+   console.log('hey you ')
   }
-
-
-
-
   return (
     /*pour gérer les composant  enfant */
     <Fragment className={classes.homeContainer}>
@@ -120,7 +116,7 @@ const handleClickCard = (url) => {
       <Box marginTop={4} display="flex" justifyContent="center">
         <LiveGrid />
       </Box>
-    <ButtonDuStream  handleClickCard={()=>handleClickCard('/cour')}/>
+    <ButtonDuStream />
     </div>
     </Fragment>
   );

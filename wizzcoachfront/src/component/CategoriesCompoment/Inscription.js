@@ -32,11 +32,11 @@ const useStyles = makeStyles(() => ({
 const handleSubmit =(event)=>{
     event.preventDefault()
 }
-function SignUp(props) {
+function Inscription(props) {
 
     const [data , setData] = React.useState({hits : []})
     const {history} = props  
-    const  handleClickSignUp = (URL) =>{
+    const  handleClickSignIn = (URL) =>{
     
     history.push(URL);
       }   
@@ -117,7 +117,7 @@ function SignUp(props) {
  
       <Typography>
           Already have an account ?
-          <Link onClick = {() => handleClickSignUp('/')}> Sign In </Link>
+          <Link onClick = {() => handleClickSignIn('/')}> Sign In </Link>
       </Typography>
             </Paper>
         </Grid>
@@ -125,4 +125,4 @@ function SignUp(props) {
         </div>
     )
     }
-export default withRouter(SignUp);
+export default withRouter(Inscription);

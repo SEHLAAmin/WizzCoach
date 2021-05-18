@@ -106,7 +106,7 @@ const MenuAppBar = props => {
               >
               
                 <MenuItem onClick={()=> handleMenuClick('/profile')}>Profile</MenuItem>
-                <MenuItem onClick={()=> handleMenuClick('/')}>Home</MenuItem>
+                <MenuItem onClick={()=> handleMenuClick('/home')}>Home</MenuItem>
                 <MenuItem onClick={null /*signOut('/Authent'*/}>Deconnection</MenuItem>
 
               </Menu>

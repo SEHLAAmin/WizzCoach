@@ -3,7 +3,7 @@ import React from 'react'
 import { withRouter } from 'react-router'
 import MenuAppBar from '../MenuAppBar'
 import SideBar from '../SideBar'
-import {Button, FormControl, InputLabel, makeStyles, Paper, TextField} from '@material-ui//core'
+import {Button, FormControl, Grow, InputLabel, makeStyles, Paper, TextField} from '@material-ui//core'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -60,7 +60,7 @@ function LiveForm(props) {
         <div>
         <MenuAppBar /> 
         <SideBar/>
-
+        <Grow in={true}  timeout={'auto'}>
 <Paper className={classes.conteneurForm}>
 
     <h1> Remplissez le formulaire </h1>
@@ -90,6 +90,7 @@ function LiveForm(props) {
 
     </FormControl>
 </Paper>
+</Grow>
         </div>
     )
 }
