@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping(path = "api/v1/lives")
-@CrossOrigin
+@CrossOrigin(value = "*", allowedHeaders = "*")
 public class LiveController {
 
 
@@ -63,6 +63,7 @@ public class LiveController {
 
 
     @PostMapping("/coachpostLive/{coachId}")
+    @CrossOrigin(value = "*", allowedHeaders = "*")
     public ResponseEntity<Void> postLiveByCoachId(@RequestBody Live live ,
                                                   @PathVariable(value ="coachId") CoachUser coachId
     ) {

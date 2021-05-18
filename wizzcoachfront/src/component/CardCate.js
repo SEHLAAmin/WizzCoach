@@ -14,12 +14,12 @@ import { useState } from "react";
 import handleShowDetail from "./Profile";
 import handleClickCard from "./Profile";
 const useStyles = makeStyles({
-  cardroot: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
+    cardroot: {
+        maxWidth: 345,
+    },
+    media: {
+        height: 140,
+    },
 });
 
 /*
@@ -36,39 +36,46 @@ const categories = ["Yoga" , "Muscu" , "Dos"]
 const Listcategories = categories.map((categories) => <h2>{categ*/
 
 const CardCate = (props) => {
-  const classes = useStyles();
-  const { history } = props;
+    const classes = useStyles();
+    const { history } = props;
 
-  return (
-    <div>
-      <Card className={classes.cardroot}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image={props.image}
-            title={props.title}
-          />{" "}
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {" "}
-              {props.categoriesName}{" "}
-            </Typography>{" "}
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.Asperiores
-              magnam nihil eos dolor f{" "}
-            </Typography>{" "}
-          </CardContent>{" "}
-        </CardActionArea>{" "}
-        <CardActions>
-          <Button size="small" color="primary">
-            Joins us!
-          </Button>{" "}
-          <Button size="small" color="primary">
-            Learn More{" "}
-          </Button>{" "}
-        </CardActions>{" "}
-      </Card>{" "}
-    </div>
-  );
+    return ( <
+        div >
+        <
+        Card className = { classes.cardroot } >
+        <
+        CardActionArea >
+        <
+        CardMedia className = { classes.media }
+        image = { props.image }
+        title = { props.title }
+        />{" "} <
+        CardContent >
+        <
+        Typography gutterBottom variant = "h5"
+        component = "h2" > { " " } { props.categoriesName } { " " } <
+        /Typography>{" "} <
+        Typography variant = "body2"
+        color = "textSecondary"
+        component = "p" >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.Asperiores magnam nihil eos dolor f { " " } <
+        /Typography>{" "} <
+        /CardContent>{" "} <
+        /CardActionArea>{" "} <
+        CardActions >
+        <
+        Button size = "small"
+        color = "primary" >
+        Joins us!
+        <
+        /Button>{" "} <
+        Button size = "small"
+        color = "primary" >
+        Learn More { " " } <
+        /Button>{" "} <
+        /CardActions>{" "} <
+        /Card>{" "} <
+        /div>
+    );
 };
 export default CardCate;

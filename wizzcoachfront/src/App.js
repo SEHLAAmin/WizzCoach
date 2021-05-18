@@ -31,8 +31,8 @@ function App(props) {
     <div className="App">
   <BrowserRouter>
   <Switch>
-    <Route exact from="/" render = {props => <Home {...props} />}/>
-    <Route exact from="/Authent" render = {props => <Authent {...props} />}/>
+    <Route exact from="/home" render = {props => <Home {...props} />}/>
+    <Route exact from="/" render = {props => <Authent {...props} />}/>
     <Route exact from="/profile" render = {props => <Profile {...props} />}/>
     <Route exact from = "/UserForm" render = {props => <UserForm {...props} />}/>
     <Route exact from = "/cour/yoga" render = {props => <Yoga {...props} />}/>

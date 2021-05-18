@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     '&:hover': {
       backgroundPosition: '100% 0%',
       left: '5px',
-      transition: 'all 1s ease-in-out',
+      transition: 'all .3s ease-in-out',
     }
 
 

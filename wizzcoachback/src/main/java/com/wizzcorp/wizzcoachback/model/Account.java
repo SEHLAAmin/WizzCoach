@@ -20,7 +20,7 @@ public class Account {
     String lastName;
     String pseudo;
     String password;
-    String adressMail;
+    String email;
     String role;
     boolean enabled;
     String avatarUrl;

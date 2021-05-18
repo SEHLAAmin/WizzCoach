@@ -69,6 +69,9 @@ const handleClickCard = (url) => {
    history.push(url);
   }
 
+  const handleClickButton =(url) => {
+    history.push(url);
+  }
 
 
 
@@ -120,7 +123,7 @@ const handleClickCard = (url) => {
       <Box marginTop={4} display="flex" justifyContent="center">
         <LiveGrid />
       </Box>
-    <ButtonDuStream />
+    <ButtonDuStream buttonDuStream = {() => handleClickCard('/cour')}/>
     </div>
     </Fragment>
   );
