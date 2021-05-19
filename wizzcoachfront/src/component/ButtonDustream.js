@@ -1,5 +1,6 @@
 import React from 'react'
 import {Button, makeStyles} from '@material-ui/core'
+import { withRouter } from 'react-router';
 const useStyles = makeStyles({
  button: {position : 'fixed',
  zIndex : '100',
@@ -19,14 +20,21 @@ const useStyles = makeStyles({
 }});
 
 
-export default function ButtonDustream(props) {
+
+
+function ButtonDustream(props) {
+    const  {history} = props;
+
+    const handleClickButtonDuStream = (URL) => {
+        history.push(URL);
+    }
+
+
     const classes = useStyles(props);
-
-//Redirige vers sa catégorie respective
-
     return (
-        <Button className = {classes.button} onClick = {props.ButtonDustream} >
+        <Button className = {classes.button} onClick={()=> { handleClickButtonDuStream('/cour')}}>
 Lancez Stream  
         </Button>
     )
 }
+export default withRouter(ButtonDustream);
